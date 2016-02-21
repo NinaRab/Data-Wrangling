@@ -8,14 +8,6 @@ library(tidyr)]
 ###Loading and exploring the structure of the dataset.  
 Doing this I came up with 8 different tables/data frames that would need to be merged, they are: x_train, y_train, x_test, y_test, subject_test, subject_train, feature_labels, and activity_labels. 
 
-[x_train <- read.table("c:/Users/Nina/Desktop/datafoundations/UCI HAR Dataset/train/X_train.txt")
-y_train <- read.table("c:/Users/Nina/Desktop/datafoundations/UCI HAR Dataset/train/y_train.txt")
-x_test <- read.table("c:/Users/Nina/Desktop/datafoundations/UCI HAR Dataset/test/X_test.txt")
-y_test <- read.table("c:/Users/Nina/Desktop/datafoundations/UCI HAR Dataset/test/y_test.txt")
-subject_test <- read.table("c:/Users/Nina/Desktop/datafoundations/UCI HAR Dataset/test/subject_test.txt")
-subject_train <- read.table("c:/Users/Nina/Desktop/datafoundations/UCI HAR Dataset/train/subject_train.txt")
-feature_labels <- read.table("c:/Users/Nina/Desktop/datafoundations/UCI HAR Dataset/features.txt")
-activity_labels <-read.table("c:/Users/Nina/Desktop/datafoundations/UCI HAR Dataset/activity_labels.txt")]
 
 ###Merge training and test data (on X,subject & y respectively)
 At this point, the task was to merge the training data with the test data, which is what I did to create 3 different data frames called x_data, subject_total, and y_data, each from x_test & x_train, subject_test & subject_train, and y_test & y_train, respectively. At this point, I ignored the labels for the data.
@@ -46,3 +38,7 @@ I selected everything from one_data_set except for those columns which had "mean
 ###Create a new summary data set from select_data
 In this step I created a tidy data set from select_data which calculated the mean for each column, grouped by subject and activity name.  The resulting data frame, called summary_data, included 180 observations (to account for 30 subjects * 6 activities) of 478 variables.  
 [summary_data <- select_data %>% group_by(Subject, ActivityName) %>% summarise_each(funs(mean))]
+
+
+####The summary_data can be viewed here:
+[https://drive.google.com/file/d/0B8dPWvrTMSCSMlJyVlBLY1lRaU0/view?usp=sharing](url)
